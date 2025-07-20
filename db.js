@@ -29,3 +29,46 @@ export const addPost = async ({ titulo, img, descripcion }) => {
   const result = await pool.query(consulta, values);
   return result.rows[0];
 };
+
+// ✅ NUEVO: Aumentar likes de un post
+export const likePost = async (id) => {
+  try {
+    const consulta = `
+      UPDATE posts
+      SET likes = likes + 1
+      WHERE id = $1
+      RETURNING *;
+    `;
+    const result = await pool.query(consulta, [id]);
+
+    if (result.rowCount === 0) {
+      throw new Error("Post no encontrado");
+    }
+
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error en likePost:", error.message);
+    throw error;
+  }
+};
+
+// ✅ NUEVO: Eliminar un post por ID
+export const deletePost = async (id) => {
+  try {
+    const consulta = `
+      DELETE FROM posts
+      WHERE id = $1
+      RETURNING *;
+    `;
+    const result = await pool.query(consulta, [id]);
+
+    if (result.rowCount === 0) {
+      throw new Error("Post no encontrado");
+    }
+
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error en deletePost:", error.message);
+    throw error;
+  }
+};

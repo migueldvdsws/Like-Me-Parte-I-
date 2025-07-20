@@ -8,11 +8,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "pg": "^8.16.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migueldvdsws/Like-Me-Parte-I-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/migueldvdsws/Like-Me-Parte-I-/issues"
+  },
+  "homepage": "https://github.com/migueldvdsws/Like-Me-Parte-I-#readme",
+  "description": ""
 }
